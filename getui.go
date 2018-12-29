@@ -84,7 +84,7 @@ func GetSaveListBodyParmar(appKey string) *push.SaveListBodyParmar {
 
 	message := tool.GetMessage()
 	message.SetAppKey(appKey)
-	message.SetMsgType("notification")
+	message.SetMsgType(tool.MsgTypeNotification)
 
 	notification := tool.GetNotification()
 	notification.SetTransmissionContent("透传内容")
@@ -124,7 +124,7 @@ func pushSingle(auth_token string) (*push.PushSingleResult, error) {
 
 	message := tool.GetMessage()
 	message.SetAppKey(appKey)
-	message.SetMsgType("notification")
+	message.SetMsgType("link")
 
 	notification := tool.GetNotification()
 	notification.SetTransmissionContent("透传内容")

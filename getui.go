@@ -1,23 +1,23 @@
 package main
 
 import (
-	push "GetuiDemo/getui/push"
-	query "GetuiDemo/getui/query"
-	style "GetuiDemo/getui/style"
-	token "GetuiDemo/getui/token"
-	tool "GetuiDemo/getui/tool"
 	"fmt"
+	push "github.com/HankWang95/go-getui-api/push"
+	query "github.com/HankWang95/go-getui-api/query"
+	style "github.com/HankWang95/go-getui-api/style"
+	token "github.com/HankWang95/go-getui-api/token"
+	tool "github.com/HankWang95/go-getui-api/tool"
 	"time"
 
 	log "github.com/inconshreveable/log15"
 )
 
 var (
-	appId        string = "XH93kDE2AZ6x3pCGwEQNn"
-	appKey       string = "mL0IIpwukX53MGE4BjZjs1"
-	appSecret    string = "KUp3G7LC6V98fZsUdeTGO5"
-	masterSecret string = "tT1khrhlup8vskHi5iVpk4"
-	cid          string = "45f8a382f93b018a4ba4b5cb6c497cc0"
+	appId        = "XH93kDE2AZ6x3pCGwEQNn"
+	appKey       = "mL0IIpwukX53MGE4BjZjs1"
+	appSecret    = "KUp3G7LC6V98fZsUdeTGO5"
+	masterSecret = "tT1khrhlup8vskHi5iVpk4"
+	cid          = "45f8a382f93b018a4ba4b5cb6c497cc0"
 )
 
 func main() {

@@ -1,10 +1,10 @@
 package token
 
 import (
-	util "GetuiDemo/getui/util"
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
+	util "github.com/HankWang95/go-getui-api/util"
 	"strconv"
 	"time"
 )

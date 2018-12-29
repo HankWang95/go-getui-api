@@ -1,9 +1,9 @@
 package push
 
 import (
-	tool "GetuiDemo/getui/tool"
-	util "GetuiDemo/getui/util"
 	"encoding/json"
+	tool "github.com/HankWang95/go-getui-api/tool"
+	util "github.com/HankWang95/go-getui-api/util"
 )
 
 type SaveListBodyResult struct {

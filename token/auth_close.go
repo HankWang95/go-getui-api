@@ -1,8 +1,8 @@
 package token
 
 import (
-	util "GetuiDemo/getui/util"
 	"encoding/json"
+	util "github.com/HankWang95/go-getui-api/util"
 )
 
 type CloseTokenResult struct {

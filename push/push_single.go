@@ -1,9 +1,9 @@
 package push
 
 import (
-	tool "GetuiDemo/getui/tool"
-	util "GetuiDemo/getui/util"
 	"encoding/json"
+	tool "github.com/HankWang95/go-getui-api/tool"
+	util "github.com/HankWang95/go-getui-api/util"
 )
 
 //消息应用模板 notification、link、notypopload、transmission 四种类型选其一该属性与message下面的msgtype一致

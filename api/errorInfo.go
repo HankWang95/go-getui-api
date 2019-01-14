@@ -15,7 +15,7 @@ var (
 func handleResult(result *push.PushSingleResult) (reDo bool, err error) {
 	switch result.Result {
 	case "ok":
-	case "sign_error":
+	case "not_auth":
 		// token 失效后redo
 		err := initToken()
 		if err != nil {

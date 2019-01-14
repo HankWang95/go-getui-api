@@ -3,7 +3,6 @@ package getui
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -88,6 +87,6 @@ func GetBody(parmar interface{}) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(string(body))
+	//fmt.Println(string(body))
 	return body, nil
 }

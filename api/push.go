@@ -2,6 +2,8 @@ package api
 
 import (
 	"github.com/HankWang95/go-getui-api/push"
+	"github.com/HankWang95/go-getui-api/style"
+	"github.com/smartwalle/xid"
 	"time"
 )
 
@@ -29,5 +31,14 @@ func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result 
 		}
 	}
 	return nil, PushErr
+}
 
+func LazyPush(cid, title, content string) error {
+	msgStyle := style.GetSystemStyle(content, title)
+	p := GetNotification(msgStyle, "", "", "")
+	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
+	if err != nil {
+		return err
+	}
+	return nil
 }

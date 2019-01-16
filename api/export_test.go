@@ -57,3 +57,10 @@ func TestCheckUserOnline(t *testing.T) {
 	s, e := CheckUserOnline(myPhoneCID)
 	fmt.Println(s, e)
 }
+
+func TestLazyPush(t *testing.T) {
+	err := LazyPush(myPhoneCID, "lazy Push test", "lazy push content")
+	if err != nil {
+		fmt.Println(err)
+	}
+}

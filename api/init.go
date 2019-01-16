@@ -17,7 +17,6 @@ func InitGeTui(appkey, appid, mastersecret string) {
 	if err != nil {
 		panic(err)
 	}
-	return
 }
 
 func initToken() error {

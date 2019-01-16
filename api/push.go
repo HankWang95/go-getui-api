@@ -19,7 +19,7 @@ func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result 
 		if err != nil {
 			return nil, err
 		}
-		redo, err := handleResult(result)
+		redo, err := handlePushSingleResult(result)
 		if err != nil {
 			return nil, err
 		}
@@ -33,12 +33,47 @@ func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result 
 	return nil, PushErr
 }
 
+//func PushList(cids, alias []string,  taskId string, p *push.PushListParmar) (result *push.PushListResult, err error) {
+//	p.Cid = cids
+//	p.Alias = alias
+//	p.TaskId = taskId
+//
+//	// Push不成功，重试5次
+//	for redoTime := 0; redoTime < 5; redoTime++ {
+//		result, err := push.PushList(getAppId(), getToken(), p)
+//		if err != nil {
+//			return nil, err
+//		}
+//		redo, err := handlePushListResult(result)
+//		if err != nil {
+//			return nil, err
+//		}
+//		if redo {
+//			time.Sleep(300 * time.Microsecond)
+//			continue
+//		} else {
+//			return result, nil
+//		}
+//	}
+//	return nil, PushErr
+//}
+
 func LazyPush(cid, title, content string) error {
 	msgStyle := style.GetSystemStyle(content, title)
-	p := GetNotification(msgStyle, "", "", "")
+	p := GetPushSingleNotification(msgStyle, "", "", "")
 	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
 	if err != nil {
 		return err
 	}
 	return nil
 }
+//
+//func LazyPushList(cids []string, title, content string) error {
+//	msgStyle := style.GetSystemStyle(content, title)
+//	p := GetPushSingleNotification(msgStyle, "", "", "")
+//	_, err := PushList(cids, nil, xid.NewXID().Hex(), p)
+//	if err != nil {
+//		return err
+//	}
+//	return nil
+//}

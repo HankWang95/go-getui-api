@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/HankWang95/go-getui-api/api"
 	push "github.com/HankWang95/go-getui-api/push"
 	query "github.com/HankWang95/go-getui-api/query"
 	style "github.com/HankWang95/go-getui-api/style"
@@ -84,7 +85,7 @@ func GetSaveListBodyParmar(appKey string) *push.SaveListBodyParmar {
 
 	message := tool.GetMessage()
 	message.SetAppKey(appKey)
-	message.SetMsgType(tool.MsgTypeNotification)
+	message.SetMsgType(string(api.MsgTypeNotification))
 
 	notification := tool.GetNotification()
 	notification.SetTransmissionContent("透传内容")

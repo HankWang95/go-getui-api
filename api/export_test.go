@@ -17,7 +17,7 @@ var(
 
 var (
 	msgStyle = style.GetSystemStyle("title 1333 ", "content 1222 ")
-	p = GetNotification(msgStyle, "", "", "")
+	p = GetPushSingleNotification(msgStyle, "", "", "")
 )
 
 func init() {

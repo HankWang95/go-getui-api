@@ -30,7 +30,7 @@ func GetUndefinedTypeMessage() *tool.Message {
 // style 通知栏消息布局样式, 必填
 // transmissionContent : 透传内容，没有传 ""
 // durationBegin, druationEnd 设定展示开始时间\结束时间
-func GetNotification(style interface{}, transmissionContent, durationBegin, durationEnd string) *push.PushSingleParmar {
+func GetPushSingleNotification(style interface{}, transmissionContent, durationBegin, durationEnd string) *push.PushSingleParmar {
 	m := getDefaultMessage(MsgTypeNotification)
 	n := tool.GetNotification()
 
@@ -50,3 +50,4 @@ func GetNotification(style interface{}, transmissionContent, durationBegin, dura
 	}
 	return p
 }
+

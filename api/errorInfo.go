@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"github.com/HankWang95/go-getui-api/push"
 	"github.com/smartwalle/errors"
 )
@@ -12,10 +11,10 @@ var (
 	PushErr     = errors.New("10003", "Push 失败")
 )
 
-func handleResult(result *push.PushSingleResult) (reDo bool, err error) {
+func handlePushSingleResult(result *push.PushSingleResult) (reDo bool, err error) {
 	switch result.Result {
 	case "ok":
-	case "not_auth":
+	case "not_auth", "sign_error":
 		// token 失效后redo
 		err := initToken()
 		if err != nil {
@@ -23,10 +22,26 @@ func handleResult(result *push.PushSingleResult) (reDo bool, err error) {
 		}
 		return true, nil
 	default:
-		fmt.Println("notice:30021", RESULT_MAP[result.Result])
+		//fmt.Println("notice:", RESULT_MAP[result.Result])
 	}
 	return false, nil
 }
+
+//func handlePushListResult(result *push.PushListResult) (reDo bool, err error) {
+//	switch result.Result {
+//	case "ok":
+//	case "not_auth", "sign_error":
+//		// token 失效后redo
+//		err := initToken()
+//		if err != nil {
+//			return false, err
+//		}
+//		return true, nil
+//	default:
+//		//fmt.Println("notice:", RESULT_MAP[result.Result])
+//	}
+//	return false, nil
+//}
 
 var RESULT_MAP = map[string]string{
 	"ok":                   "成功",

@@ -9,6 +9,10 @@ import (
 
 // 单推，cid alias 二者只会生效一个，cid权重大
 func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result *push.PushSingleResult, err error) {
+	if getAppId() == "" {
+		return nil, nil
+	}
+
 	p.RequestId = requestId
 	p.Cid = cid
 	p.Alias = alias

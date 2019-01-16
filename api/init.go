@@ -9,14 +9,12 @@ var (
 	authToken    string
 )
 
-func InitGeTui(appkey, appid, mastersecret string) {
+func InitGeTui(appkey, appid, mastersecret string) (err error) {
 	appKey = appkey
 	appId = appid
 	masterSecret = mastersecret
-	err := initToken()
-	if err != nil {
-		panic(err)
-	}
+	return initToken()
+
 }
 
 func initToken() error {

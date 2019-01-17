@@ -62,9 +62,14 @@ func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result 
 //	return nil, PushErr
 //}
 
-func LazyPush(cid, title, content string) error {
+func LazyPush(cid, title, content, transmission string) error {
 	msgStyle := style.GetSystemStyle(content, title)
-	p := GetPushSingleNotification(msgStyle, "", "", "")
+	var p *push.PushSingleParmar
+	if transmission == "" {
+		p = GetPushSingleNotification(msgStyle, "", "", "")
+	} else {
+		p = GetPushSingleMsgTypeTransmission(msgStyle, transmission, "", "")
+	}
 	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
 	if err != nil {
 		return err

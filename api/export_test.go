@@ -21,7 +21,8 @@ var (
 )
 
 func init() {
-	InitGeTui(testAppkey, testAppID, testMasterSecret)
+	err := InitGeTui(testAppkey, testAppID, testMasterSecret)
+	fmt.Println(err)
 }
 
 // 单推
@@ -59,7 +60,7 @@ func TestCheckUserOnline(t *testing.T) {
 }
 
 func TestLazyPush(t *testing.T) {
-	err := LazyPush(myPhoneCID, "lazy Push test", "lazy push content")
+	err := LazyPush(myPhoneCID, "lazy Push test", "lazy push content", "sada")
 	if err != nil {
 		fmt.Println(err)
 	}

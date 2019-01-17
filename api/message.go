@@ -51,3 +51,27 @@ func GetPushSingleNotification(style interface{}, transmissionContent, durationB
 	return p
 }
 
+// style 通知栏消息布局样式, 必填
+// transmissionContent : 透传内容，没有传 ""
+// durationBegin, druationEnd 设定展示开始时间\结束时间
+func GetPushSingleMsgTypeTransmission(style interface{}, transmissionContent, durationBegin, durationEnd string) *push.PushSingleParmar {
+	m := getDefaultMessage(MsgTypeNotification)
+	n := tool.GetNotification()
+
+	if transmissionContent != "" {
+		n.SetTransmissionContent(transmissionContent)
+	}
+	if durationBegin != "" {
+		n.SetDurationBegin(durationBegin)
+	}
+	if durationEnd != "" {
+		n.SetDurationEnd(durationEnd)
+	}
+	n.SetNotifyStyle(style)
+	p := &push.PushSingleParmar{
+		Message:      m,
+		Notification: n,
+	}
+	return p
+}
+

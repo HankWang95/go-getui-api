@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"github.com/HankWang95/go-getui-api/push"
 	"github.com/HankWang95/go-getui-api/style"
 	"github.com/smartwalle/xid"

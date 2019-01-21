@@ -28,6 +28,7 @@ type PushInfo struct {
 		AutoBadge        string `json:"autoBadge,omitempty"`
 		ContentAvailable int    `json:"content-available,omitempty"`
 	} `json:"aps"`
+	Transmission string `json:"transmission,omitempty"`
 }
 
 type PushSingleResult struct {

@@ -62,7 +62,7 @@ func TestCheckUserOnline(t *testing.T) {
 }
 
 func TestLazyPush(t *testing.T) {
-	err := LazyPush(fengIphone, "lazy Push test", "lazy push content", "sada")
+	err := LazyPush(fuIphone, "lazy Push test", "lazy push content", "fulei!!!!!!!!!!!!!")
 	if err != nil {
 		fmt.Println(err)
 	}

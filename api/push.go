@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"github.com/HankWang95/go-getui-api/push"
 	"github.com/HankWang95/go-getui-api/style"
 	"github.com/smartwalle/xid"
@@ -51,10 +52,12 @@ func LazyPush(cid, title, content, transmission string) error {
 	pushInfo.Aps.Alert.Title = title
 	pushInfo.Aps.Alert.Body = content
 	pushInfo.Aps.AutoBadge = "+1"
+	pushInfo.Transmission = transmission
 	p.PushInfo = pushInfo
-	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
+	res, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
 	if err != nil {
 		return err
 	}
+	fmt.Println(*res, *p)
 	return nil
 }

@@ -2,7 +2,7 @@ package push
 
 import (
 	"encoding/json"
-	tool "github.com/HankWang95/go-getui-api/tool"
+	"github.com/HankWang95/go-getui-api/tool"
 	util "github.com/HankWang95/go-getui-api/util"
 )
 
@@ -16,6 +16,18 @@ type PushSingleParmar struct {
 	Cid          string             `json:"cid,omitempty"`
 	Alias        string             `json:"alias,omitempty"`
 	RequestId    string             `json:"requestid"`
+	PushInfo     *PushInfo          `json:"push_info"`
+}
+
+type PushInfo struct {
+	Aps struct {
+		Alert struct {
+			Title string `json:"title,omitempty"`
+			Body  string `json:"body,omitempty"`
+		} `json:"alert"`
+		AutoBadge        string `json:"autoBadge,omitempty"`
+		ContentAvailable int    `json:"content-available,omitempty"`
+	} `json:"aps"`
 }
 
 type PushSingleResult struct {

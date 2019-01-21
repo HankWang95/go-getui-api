@@ -8,16 +8,18 @@ import (
 	"testing"
 )
 
-var(
-	testAppkey = "K18daILRxi84F6otMqDMr7"
-	testAppID = "77DMykZUPT8kBKveSUYSj8"
+var (
+	testAppkey       = "K18daILRxi84F6otMqDMr7"
+	testAppID        = "77DMykZUPT8kBKveSUYSj8"
 	testMasterSecret = "nsCjdmj0i29s2xeLr0Lks"
-	myPhoneCID = "e3e21cb9534dc41fe4b676fc464ae065"
+	myPhoneCID       = "e3e21cb9534dc41fe4b676fc464ae065"
+	fengIphone       = "d7b1816578da08b3a59001ecff518ae4"
+	fuIphone         = "7dec5ca14732814b3a92fe740ebd6314"
 )
 
 var (
 	msgStyle = style.GetSystemStyle("title 1333 ", "content 1222 ")
-	p = GetPushSingleNotification(msgStyle, "", "", "")
+	p        = GetPushSingleNotification(msgStyle, "", "", "")
 )
 
 func init() {
@@ -44,7 +46,7 @@ func TestPushSingle(t *testing.T) {
 func TestPushSingleCloseToken(t *testing.T) {
 	fmt.Println("----------------------TestPushSingleCloseToken\t---------------------------")
 	tokenResult, err := token.SetAuthClose(getAppId(), getToken())
-	fmt.Println("set token close :",tokenResult, err)
+	fmt.Println("set token close :", tokenResult, err)
 	result, err := PushSingle("", "hh", xid.NewXID().Hex(), p)
 	if err != nil {
 		t.Error(err)
@@ -60,7 +62,7 @@ func TestCheckUserOnline(t *testing.T) {
 }
 
 func TestLazyPush(t *testing.T) {
-	err := LazyPush(myPhoneCID, "lazy Push test", "lazy push content", "sada")
+	err := LazyPush(fengIphone, "lazy Push test", "lazy push content", "sada")
 	if err != nil {
 		fmt.Println(err)
 	}

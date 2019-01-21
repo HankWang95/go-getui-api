@@ -74,4 +74,3 @@ func GetPushSingleMsgTypeTransmission(style interface{}, transmissionContent, du
 	}
 	return p
 }
-

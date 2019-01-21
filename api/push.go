@@ -16,6 +16,8 @@ func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result 
 	p.RequestId = requestId
 	p.Cid = cid
 	p.Alias = alias
+	//j,err:=json.Marshal(p)
+	//fmt.Println(string(j))
 
 	// Push不成功，重试5次
 	for redoTime := 0; redoTime < 5; redoTime++ {
@@ -37,31 +39,6 @@ func PushSingle(cid, alias, requestId string, p *push.PushSingleParmar) (result 
 	return nil, PushErr
 }
 
-//func PushList(cids, alias []string,  taskId string, p *push.PushListParmar) (result *push.PushListResult, err error) {
-//	p.Cid = cids
-//	p.Alias = alias
-//	p.TaskId = taskId
-//
-//	// Push不成功，重试5次
-//	for redoTime := 0; redoTime < 5; redoTime++ {
-//		result, err := push.PushList(getAppId(), getToken(), p)
-//		if err != nil {
-//			return nil, err
-//		}
-//		redo, err := handlePushListResult(result)
-//		if err != nil {
-//			return nil, err
-//		}
-//		if redo {
-//			time.Sleep(300 * time.Microsecond)
-//			continue
-//		} else {
-//			return result, nil
-//		}
-//	}
-//	return nil, PushErr
-//}
-
 func LazyPush(cid, title, content, transmission string) error {
 	msgStyle := style.GetSystemStyle(content, title)
 	var p *push.PushSingleParmar
@@ -70,19 +47,14 @@ func LazyPush(cid, title, content, transmission string) error {
 	} else {
 		p = GetPushSingleMsgTypeTransmission(msgStyle, transmission, "", "")
 	}
+	pushInfo := new(push.PushInfo)
+	pushInfo.Aps.Alert.Title = title
+	pushInfo.Aps.Alert.Body = content
+	pushInfo.Aps.AutoBadge = "+1"
+	p.PushInfo = pushInfo
 	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
 	if err != nil {
 		return err
 	}
 	return nil
 }
-//
-//func LazyPushList(cids []string, title, content string) error {
-//	msgStyle := style.GetSystemStyle(content, title)
-//	p := GetPushSingleNotification(msgStyle, "", "", "")
-//	_, err := PushList(cids, nil, xid.NewXID().Hex(), p)
-//	if err != nil {
-//		return err
-//	}
-//	return nil
-//}

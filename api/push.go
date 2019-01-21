@@ -54,10 +54,9 @@ func LazyPush(cid, title, content, transmission string) error {
 	pushInfo.Aps.AutoBadge = "+1"
 	pushInfo.Transmission = transmission
 	p.PushInfo = pushInfo
-	res, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
+	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
 	if err != nil {
 		return err
 	}
-	fmt.Println(*res, *p)
 	return nil
 }

@@ -40,10 +40,7 @@ func BytePost(url string, auth_token string, bodyByte []byte) (string, error) {
 	req.Header.Add("Charset", CHARSET)
 	req.Header.Add("Content-Type", CONTENT_TYPE_JSON)
 
-	client := &http.Client{
-		Timeout: DEFAULT_CONNECTION_TIMEOUT * time.Second,
-	}
-	resp, err := client.Do(req)
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return "", err
 	}

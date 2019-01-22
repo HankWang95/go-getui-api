@@ -50,7 +50,7 @@ func LazyPush(cid, title, content, transmission string) error {
 	pushInfo := new(push.PushInfo)
 	pushInfo.Aps.Alert.Title = title
 	pushInfo.Aps.Alert.Body = content
-	pushInfo.Aps.AutoBadge = "+1"
+	pushInfo.Aps.AutoBadge = "1"
 	pushInfo.Transmission = transmission
 	p.PushInfo = pushInfo
 	_, err := PushSingle(cid, "", xid.NewXID().Hex(), p)
